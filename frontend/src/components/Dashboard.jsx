@@ -95,9 +95,12 @@ function Dashboard() {
         {/* Left Column: Form or Guest CTA */}
         <div className="lg:col-span-1">
           {isAuthenticated ? (
-             <ContactForm onSuccess={handleCreateSuccess} onError={handleError} />
+            <ContactForm
+              onSuccess={handleCreateSuccess}
+              onError={handleError}
+            />
           ) : (
-             <GuestCTA />
+            <GuestCTA />
           )}
         </div>
 
@@ -117,13 +120,19 @@ function Dashboard() {
               <Loader2 size={32} className="text-blue-500 animate-spin mb-3" />
               <p className="text-gray-500 text-sm">Loading contacts...</p>
             </div>
-          ) : (
+          ) : contacts.length > 0 ? (
             <ContactList
               contacts={contacts}
               onDelete={handleDelete}
               deletingId={deletingId}
               isAuthenticated={isAuthenticated}
             />
+          ) : (
+            <div className="text-center py-20 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200">
+              <p className="text-gray-500 italic">
+                No contacts added yet. Start by filling the form!
+              </p>
+            </div>
           )}
         </div>
       </div>
