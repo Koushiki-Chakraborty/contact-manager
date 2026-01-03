@@ -4,8 +4,8 @@ ConnectHub is a professional MERN stack application designed for seamless contac
 
 ## Live Links
 
-- **Frontend:**
-- **Backend API:**
+- **Frontend:** [https://contact-manager-vert-two.vercel.app/](https://contact-manager-vert-two.vercel.app/)
+- **Backend API:** [https://connecthub-backend-g8pu.onrender.com/](https://connecthub-backend-g8pu.onrender.com/)
 
 ## Data Flow Diagram
 
@@ -57,6 +57,7 @@ This project follows a decoupled MERN architecture with JWT-based authentication
 
 ```bash
 git clone https://github.com/Koushiki-Chakraborty/contact-manager.git
+cd contact-manager
 ```
 
 2. Setup Backend:
@@ -83,6 +84,12 @@ git clone https://github.com/Koushiki-Chakraborty/contact-manager.git
 
 - Install dependencies: npm install.
 
+- Create a .env file in the /frontend directory:
+
+  ```text
+  VITE_API_URL=https://connecthub-backend-g8pu.onrender.com/api
+  ```
+
 - Start the app: npm run dev.
 
 ## API Endpoints
@@ -101,10 +108,3 @@ git clone https://github.com/Koushiki-Chakraborty/contact-manager.git
 | GET    | /api/contacts     | Get user contacts  |
 | POST   | /api/contacts     | Create new contact |
 | DELETE | /api/contacts/:id | Delete contact     |
-
-## Future Improvements
-
-- Edit/update contact functionality
-- Pagination for large contact lists
-- Role-based access control (Admin/User)
-- Server-side rate limiting
