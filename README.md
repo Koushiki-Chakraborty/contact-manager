@@ -62,9 +62,15 @@ cd contact-manager
 
 2. Setup Backend:
 
-- Navigate to /backend.
+- Open a terminal and move to the backend folder:
+    ```bash
+    cd backend  
+    ```
 
-- Install dependencies: npm install.
+- Install dependencies: 
+    ```bash
+    npm install 
+    ```
 
 - Create a `.env` file in the `/backend` directory based on the variables below:
   (A `.env.example` file is included to document required keys)
@@ -80,15 +86,21 @@ cd contact-manager
 
 3. Setup Frontend:
 
-- Navigate to /frontend.
-
-- Install dependencies: npm install.
+- Open a second terminal and move to the frontend folder:
+    ```bash
+    cd frontend
+    ```
+- Install dependencies: 
+    ```bash
+    npm install
+    ```
 
 - Create a .env file in the /frontend directory:
 
   ```text
-  VITE_API_URL=https://connecthub-backend-g8pu.onrender.com/api
+  VITE_API_URL=http://localhost:5000/api
   ```
+(Note: Use the localhost URL for local testing)
 
 - Start the app: npm run dev.
 
