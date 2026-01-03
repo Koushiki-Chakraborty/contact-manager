@@ -68,12 +68,12 @@ git clone https://github.com/Koushiki-Chakraborty/contact-manager.git
 - Create a `.env` file in the `/backend` directory based on the variables below:
   (A `.env.example` file is included to document required keys)
 
-```text
+  ```text
 
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-PORT=5000
-```
+  MONGO_URI=your_mongodb_connection_string
+  JWT_SECRET=your_secret_key
+  PORT=5000
+  ```
 
 - Start the server: npm run dev.
 
