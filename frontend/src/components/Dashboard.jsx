@@ -8,11 +8,19 @@ import { Loader2, CheckCircle, XCircle } from "lucide-react";
 import { AuthContext } from "../context/AuthContext";
 
 function Dashboard() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, loading: authLoading } = useContext(AuthContext);
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState(null);
   const [notification, setNotification] = useState(null);
+
+  if (authLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
 
   // Fetch contacts on mount ONLY if authenticated
   useEffect(() => {
