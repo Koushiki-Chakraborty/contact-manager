@@ -12,7 +12,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173", // Your local Vite port
-  "https://your-frontend-link.vercel.app", // Your live frontend URL
+  "https://contact-manager-vert-two.vercel.app", // Your live frontend URL
 ];
 
 app.use(
