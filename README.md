@@ -1,2 +1,110 @@
-# Contact-Manager
-A simple Contact Management Web Application built using the MERN stack, featuring form validation, REST APIs, and MongoDB integration.
+# ConnectHub - Full-Stack Contact Manager
+
+ConnectHub is a professional MERN stack application designed for seamless contact management. It features a "Guest-First" architecture, allowing users to explore the dashboard before committing to an account.
+
+## Live Links
+
+- **Frontend:**
+- **Backend API:**
+
+## Data Flow Diagram
+
+This project follows a decoupled MERN architecture with JWT-based authentication. The diagram below illustrates how user requests are authenticated and how data flows through the system.
+
+![Data Flow Diagram](./docs/DFD.png)
+
+### Authentication & Data Cycle:
+
+1. **User Auth:** User signs in -> Backend issues **JWT** -> Frontend stores token in **LocalStorage**.
+2. **Request Interceptor:** **Axios Interceptor** injects the token into every request header (`x-auth-token`).
+3. **Guard Middleware:** Backend `authMiddleware` validates the token before allowing CRUD actions.
+4. **Data Isolation:** Contacts are queried using the `req.user.id` to ensure users only see their own data.
+
+## Features
+
+- **Guest-First Dashboard:** Publicly accessible dashboard with a Call-to-Action for guests.
+- **JWT-based Authentication:** Secure User Registration and Login using JWT (JSON Web Tokens) and Bcrypt.js.
+- **Persistent Sessions:** Custom `/api/auth/me` endpoint ensures users stay logged in on page refresh.
+- **Private CRUD Operations:** Users can only view, add, and delete their own private contacts.
+- **Responsive Design:** Built with React and Tailwind CSS for a modern, mobile-friendly experience.
+- **Robust Error Handling:** Professional backend validation and duplicate key prevention.
+
+## Tech Stack
+
+- **Frontend:** React, Vite, Tailwind CSS, Lucide Icons, Axios.
+- **Backend:** Node.js, Express.js.
+- **Database:** MongoDB (Mongoose ODM).
+- **Security:** JWT for authorization, Bcrypt for password hashing.
+
+## Project Structure
+
+```text
+├── backend/
+│   ├── controllers/   # Logic for Auth and Contacts
+│   ├── models/        # Mongoose Schemas (User, Contact)
+│   ├── routes/        # API Endpoints
+│   └── middleware/    # JWT Authentication Guard
+├── frontend/
+│   ├── src/
+│   │   ├── api/       # Axios configuration & interceptors
+│   │   ├── context/   # AuthState management
+│   │   └── components/# UI Components (ContactForm, List, GuestCTA)
+```
+
+## Installation & Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Koushiki-Chakraborty/contact-manager.git
+```
+
+2. Setup Backend:
+
+- Navigate to /backend.
+
+- Install dependencies: npm install.
+
+- Create a `.env` file in the `/backend` directory based on the variables below:
+  (A `.env.example` file is included to document required keys)
+
+```text
+
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+PORT=5000
+```
+
+- Start the server: npm run dev.
+
+3. Setup Frontend:
+
+- Navigate to /frontend.
+
+- Install dependencies: npm install.
+
+- Start the app: npm run dev.
+
+## API Endpoints
+
+### Authentication
+
+| Method | Endpoint           | Description       |
+| ------ | ------------------ | ----------------- |
+| POST   | /api/auth/register | Register new user |
+| POST   | /api/auth/login    | Login user        |
+
+### Contacts (Protected)
+
+| Method | Endpoint          | Description        |
+| ------ | ----------------- | ------------------ |
+| GET    | /api/contacts     | Get user contacts  |
+| POST   | /api/contacts     | Create new contact |
+| DELETE | /api/contacts/:id | Delete contact     |
+
+## Future Improvements
+
+- Edit/update contact functionality
+- Pagination for large contact lists
+- Role-based access control (Admin/User)
+- Server-side rate limiting

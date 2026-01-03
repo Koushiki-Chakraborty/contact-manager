@@ -20,7 +20,7 @@ exports.register = async (req, res) => {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: "24h" }, // Extended to 24h for better dev experience
+      { expiresIn: "7d" },
       (err, token) => {
         if (err) throw err;
         res.status(201).json({
@@ -41,7 +41,7 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
 
     // 1. Check for user
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email.trim().toLowerCase() });
     if (!user) {
       console.log("Login fail: User not found ->", email);
       return res.status(400).json({ msg: "Invalid Credentials" });
@@ -59,7 +59,7 @@ exports.login = async (req, res) => {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: "24h" },
+      { expiresIn: "7d" },
       (err, token) => {
         if (err) throw err;
         res.json({
